@@ -4,8 +4,9 @@ export default function Footer() {
       {/* Gambar dihapus, tinggal tambahkan justify-end jika ingin teks tetap di kanan */}
       <div className='text-white lg:font-semibold lg:text-sm font-normal text-[10px] text-right lg:space-y-3'>
         <p>@ 2025 Personal Portfolio</p>
-        <p>Made by -ALFIN</p>
+        <p>Made by -SK</p>
       </div>
     </div>
   )
 }
+
