@@ -36,29 +36,30 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center">
+        {/* --- BAGIAN KIRI: ICON HOME (Tanpa Border) --- */}
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => scrollToSection("home")}
-          className="border-2 border-blue-600 p-1.5 cursor-pointer flex items-center justify-center transition-colors hover:bg-blue-50"
+          // Menghapus border, hanya menyisakan cursor dan hover warna lembut
+          className="cursor-pointer p-1 rounded-md transition-colors hover:bg-gray-100 flex items-center justify-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
+            // ViewBox disesuaikan agar path ikon yang besar (512px) terlihat sempurna
+            viewBox="0 0 576 512" 
+            className="w-7 h-7 text-blue-600 fill-current"
           >
             <path
-              d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272l16 0 0 176c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-176 16 0c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1l-224-208zM240 320l32 0c26.5 0 48 21.5 48 48l0 96-128 0 0-96c0-26.5 21.5-48 48-48z"
+              d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 26.46a48 48 0 0 0-60.92 0L4.41 251.47a12 12 0 0 0-1.7 16.9l25.5 31.13a12 12 0 0 0 16.9 1.7L288 103.5l242.9 200.7a12 12 0 0 0 16.9-1.7l25.5-31.13a12 12 0 0 0-1.7-16.9z"
             />
           </svg>
         </motion.div>
 
+        {/* --- MENU DESKTOP --- */}
         <ul className="hidden lg:flex items-center gap-x-7 font-semibold">
           {["about", "skills", "projects", "contact"].map((section) => (
-            <motion.li
-              key={section}
-              className="group"
-              whileHover={{ scale: 1.1 }}
-            >
+            <motion.li key={section} className="group" whileHover={{ scale: 1.1 }}>
               <button onClick={() => scrollToSection(section)}>
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </button>
@@ -70,6 +71,7 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {/* --- BUTTON RESUME & MOBILE TOGGLE --- */}
         <div className="flex items-center gap-4">
           <motion.a
             href="https://drive.google.com/file/d/1IY5xJFIqgBzD70q6F1tXmBd5pVGDI8vi/view?usp=sharing"
@@ -92,6 +94,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* --- MOBILE MENU --- */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -101,10 +104,7 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="lg:hidden fixed top-0 right-0 h-full w-full bg-white z-[60]"
           >
-            <button
-              className="absolute top-5 right-5 text-2xl"
-              onClick={() => setIsOpen(false)}
-            >
+            <button className="absolute top-5 right-5 text-2xl" onClick={() => setIsOpen(false)}>
               <HiX />
             </button>
             <ul className="flex flex-col items-start ml-16 mt-28 h-full gap-y-6 font-semibold text-lg">
@@ -115,16 +115,6 @@ export default function Navbar() {
                   </button>
                 </li>
               ))}
-              <a
-                href="https://drive.google.com/file/d/1IY5xJFIqgBzD70q6F1tXmBd5pVGDI8vi/view?usp=sharing"
-                className="relative inline-block px-4 py-2 font-semibold group mt-4"
-              >
-                 <span className="absolute inset-0 w-full h-full bg-black translate-x-1 translate-y-1"></span>
-                 <span className="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
-                 <span className="relative text-black flex items-center gap-x-3">
-                  Resume <TbDownload size={16} />
-                </span>
-              </a>
             </ul>
           </motion.div>
         )}
@@ -132,4 +122,3 @@ export default function Navbar() {
     </motion.nav>
   );
 }
-
