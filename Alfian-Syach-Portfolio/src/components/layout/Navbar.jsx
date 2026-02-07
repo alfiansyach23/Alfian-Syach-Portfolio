@@ -36,14 +36,30 @@ export default function Navbar() {
         }`}
     >
       <div className="container mx-auto flex justify-between items-center">
-        <motion.img
+        <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => scrollToSection("home")}
-          className="h-9 cursor-pointer"
-          src="assets/images/home.svg"
-          alt="Logo"
-        />
+          /* Menambahkan border biru dan padding agar ikon terlihat seperti tombol yang jelas */
+          className="border-2 border-blue-600 p-1.5 cursor-pointer flex items-center justify-center transition-colors hover:bg-blue-50"
+        >
+          {/* Menggunakan SVG Inline agar warna bisa dikontrol via Tailwind (text-blue-600) */}
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            strokeWidth={2} 
+            stroke="currentColor" 
+            className="w-6 h-6 text-blue-600"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" 
+            />
+          </svg>
+        </motion.div>
+      </div>
 
         <ul className="hidden lg:flex items-center gap-x-7 font-semibold">
           {["about", "skills", "projects", "contact"].map((section) => (
@@ -129,5 +145,6 @@ export default function Navbar() {
     </motion.nav>
   );
 }
+
 
 
