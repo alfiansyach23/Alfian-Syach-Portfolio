@@ -41,7 +41,7 @@ export default function Navbar() {
           whileTap={{ scale: 0.9 }}
           onClick={() => scrollToSection("home")}
           className="h-9 cursor-pointer"
-          src="public/assets/images/home.svg"
+          src="assets/images/home.svg"
           alt="Logo"
         />
 
@@ -129,4 +129,5 @@ export default function Navbar() {
     </motion.nav>
   );
 }
+
 
