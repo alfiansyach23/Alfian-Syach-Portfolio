@@ -36,19 +36,16 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center">
-        {/* --- BAGIAN KIRI: ICON HOME (Tanpa Border) --- */}
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => scrollToSection("home")}
-          // Menghapus border, hanya menyisakan cursor dan hover warna lembut
-          className="cursor-pointer p-1 rounded-md transition-colors hover:bg-gray-100 flex items-center justify-center"
+          className="cursor-pointer p-1 rounded-md transition-colors hover:bg-white-100 flex items-center justify-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            // ViewBox disesuaikan agar path ikon yang besar (512px) terlihat sempurna
             viewBox="0 0 576 512" 
-            className="w-7 h-7 text-blue-600 fill-current"
+            className="w-7 h-7 text-black-600 fill-current"
           >
             <path
               d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 26.46a48 48 0 0 0-60.92 0L4.41 251.47a12 12 0 0 0-1.7 16.9l25.5 31.13a12 12 0 0 0 16.9 1.7L288 103.5l242.9 200.7a12 12 0 0 0 16.9-1.7l25.5-31.13a12 12 0 0 0-1.7-16.9z"
@@ -56,7 +53,6 @@ export default function Navbar() {
           </svg>
         </motion.div>
 
-        {/* --- MENU DESKTOP --- */}
         <ul className="hidden lg:flex items-center gap-x-7 font-semibold">
           {["about", "skills", "projects", "contact"].map((section) => (
             <motion.li key={section} className="group" whileHover={{ scale: 1.1 }}>
@@ -71,7 +67,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* --- BUTTON RESUME & MOBILE TOGGLE --- */}
         <div className="flex items-center gap-4">
           <motion.a
             href="https://drive.google.com/file/d/1IY5xJFIqgBzD70q6F1tXmBd5pVGDI8vi/view?usp=sharing"
@@ -94,7 +89,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* --- MOBILE MENU --- */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
