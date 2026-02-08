@@ -55,7 +55,11 @@ export default function Navbar() {
 
         <ul className="hidden lg:flex items-center gap-x-7 font-semibold">
           {["about", "skills", "projects", "contact"].map((section) => (
-            <motion.li key={section} className="group" whileHover={{ scale: 1.1 }}>
+            <motion.li
+              key={section}
+              className="group"
+              whileHover={{ scale: 1.1 }}
+            >
               <button onClick={() => scrollToSection(section)}>
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </button>
@@ -67,64 +71,65 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-4">
-          {/* RESUME DESKTOP */}
-          <motion.a
-            href="https://drive.google.com/file/d/1IY5xJFIqgBzD70q6F1tXmBd5pVGDI8vi/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden relative lg:inline-block px-4 py-2 font-medium group"
-          >
-            <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-            <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
-            <span className="relative text-black group-hover:text-white flex items-center gap-x-3">
-              Resume <TbDownload size={16} />
-            </span>
-          </motion.a>
+        <motion.a
+          href=""
+          className="hidden relative lg:inline-block px-4 py-2 font-medium group"
+        >
+          <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+          <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+          <span className="relative text-black group-hover:text-white flex items-center gap-x-3">
+            Resume <TbDownload size={16} />
+          </span>
+        </motion.a>
 
-          {/* RESUME MOBILE */}
-          <motion.a
-            href="https://drive.google.com/file/d/1IY5xJFIqgBzD70q6F1tXmBd5pVGDI8vi/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="lg:hidden p-2 border-2 border-black rounded-md"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <TbDownload size={20} />
-          </motion.a>
-
-          {/* HAMBURGER */}
-          <motion.button
-            className="lg:hidden text-2xl"
-            onClick={() => setIsOpen(!isOpen)}
-            whileHover={{ scale: 1.2 }}
-          >
-            {isOpen ? <HiX /> : <HiOutlineMenu />}
-          </motion.button>
-        </div>
+        <motion.button
+          className="lg:hidden text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+          whileHover={{ scale: 1.2 }}
+        >
+          {isOpen ? <HiX /> : <HiOutlineMenu />}
+        </motion.button>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden fixed top-0 right-0 h-full w-full bg-white z-[60]"
+            className="lg:hidden fixed top-0 right-0 h-full w-full bg-white shadow"
           >
-            <button className="absolute top-5 right-5 text-2xl" onClick={() => setIsOpen(false)}>
+            <button
+              className="absolute top-5 right-5 text-2xl"
+              onClick={() => setIsOpen(false)}
+            >
               <HiX />
             </button>
-            <ul className="flex flex-col items-start ml-16 mt-28 h-full gap-y-6 font-semibold text-lg">
+            <ul className="flex flex-col items-start ml-16 mt-28 h-full gap-y-6 font-semibold">
               {["about", "skills", "projects", "contact"].map((section) => (
-                <li key={section} className="border-b w-4/5 pb-2">
+                <motion.li
+                  key={section}
+                  className="border-b"
+                  whileHover={{ scale: 1.1 }}
+                >
                   <button onClick={() => scrollToSection(section)}>
                     {section.charAt(0).toUpperCase() + section.slice(1)}
                   </button>
-                </li>
+                </motion.li>
               ))}
+              <motion.a
+                href=""
+                className="relative inline-block px-4 py-2 font-semibold group"
+                whileHover={{ scale: 1.1 }}
+              >
+                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+                <span className="relative text-black group-hover:text-white flex items-center gap-x-3">
+                  Resume <TbDownload size={16} />
+                </span>
+              </motion.a>
             </ul>
           </motion.div>
         )}
@@ -132,4 +137,3 @@ export default function Navbar() {
     </motion.nav>
   );
 }
-
